@@ -1,0 +1,799 @@
+<!--
+  Landing Page para "Corredora Pipi" (TODO: REEMPLAZAR nombre y datos de contacto)
+  Autor: [Tu Nombre]
+  Fecha: 2026
+  Stack: HTML + CSS + JS vanilla (todo en este archivo)
+  Paleta: crema, gris oscuro, azul marino (acento)
+  Tipografía: Playfair Display (serif), DM Sans (sans-serif)
+  Responsive, mobile-first, animaciones sutiles
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Corredora Pipi — Asesoría Inmobiliaria Profesional</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #f8f7f4;
+      --color-bg-alt: #f3f2ef;
+      --color-text: #232323;
+      --color-accent: #1a2947; /* Azul marino */
+      --color-accent-light: #2d4066;
+      --color-gold: #bfa76a;
+      --color-border: #e0ded9;
+      --color-card: #fff;
+      --color-muted: #6b6b6b;
+      --radius: 12px;
+      --shadow: 0 2px 16px 0 rgba(34, 40, 49, 0.06);
+      --transition: 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    html {
+      scroll-behavior: smooth;
+      background: var(--color-bg);
+    }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', Arial, sans-serif;
+      color: var(--color-text);
+      background: var(--color-bg);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(248,247,244,0.97);
+      box-shadow: 0 1px 8px 0 rgba(34,40,49,0.04);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 2rem;
+      transition: background var(--transition);
+    }
+    .navbar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    /* TODO: REEMPLAZAR nombre/logo */
+    .navbar-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .navbar-links a {
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .navbar-links a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width var(--transition);
+      position: absolute;
+      left: 0; bottom: -2px;
+    }
+    .navbar-links a:hover::after {
+      width: 100%;
+    }
+    .navbar-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+    .navbar-toggle span {
+      width: 24px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(120deg, rgba(26,41,71,0.82) 0%, rgba(34,40,49,0.7) 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      /* TODO: REEMPLAZAR imagen de fondo */
+      color: #fff;
+      text-align: center;
+      padding-top: 5.5rem;
+      padding-bottom: 3rem;
+      position: relative;
+    }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 16px rgba(34,40,49,0.18);
+    }
+    .hero-subheadline {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 2.2rem;
+      color: #e0ded9;
+      text-shadow: 0 1px 8px rgba(34,40,49,0.12);
+    }
+    .hero-cta {
+      background: var(--color-gold);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.9rem 2.2rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background var(--transition), transform var(--transition);
+      outline: none;
+    }
+    .hero-cta:hover {
+      background: #a08a4a;
+      transform: translateY(-2px) scale(1.03);
+    }
+    /* Secciones generales */
+    section {
+      padding: 3.5rem 1.2rem 2.5rem 1.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--color-accent);
+      margin-bottom: 2.2rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    /* Servicios */
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    .servicio-card {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      transition: box-shadow var(--transition), transform var(--transition);
+      border: 1px solid var(--color-border);
+    }
+    .servicio-card:hover {
+      box-shadow: 0 4px 24px 0 rgba(34,40,49,0.10);
+      transform: translateY(-2px) scale(1.02);
+    }
+    .servicio-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-alt);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      border: 1.5px solid var(--color-accent-light);
+    }
+    .servicio-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .servicio-card p {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 1rem;
+    }
+    /* Por qué elegirnos */
+    .porque-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .porque-item {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      border-left: 4px solid var(--color-accent);
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+    .porque-item:hover {
+      box-shadow: 0 4px 24px 0 rgba(34,40,49,0.10);
+      border-color: var(--color-gold);
+    }
+    .porque-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .porque-item p {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 1rem;
+    }
+    /* Testimonios */
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    .testimonio-card {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      position: relative;
+      border: 1px solid var(--color-border);
+    }
+    .testimonio-quote {
+      font-size: 1.1rem;
+      color: var(--color-text);
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-left: 2.2rem;
+    }
+    .testimonio-quote::before {
+      content: '“';
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--color-gold);
+      position: absolute;
+      left: 0; top: -1.2rem;
+      line-height: 1;
+    }
+    .testimonio-author {
+      font-size: 1rem;
+      color: var(--color-muted);
+      font-style: italic;
+      text-align: right;
+    }
+    /* Formulario de contacto */
+    .contacto-container {
+      background: var(--color-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      max-width: 540px;
+      margin: 0 auto;
+      border: 1px solid var(--color-border);
+    }
+    .contacto-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .contacto-tab {
+      background: var(--color-bg-alt);
+      color: var(--color-accent);
+      border: none;
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      outline: none;
+    }
+    .contacto-tab.active {
+      background: var(--color-accent);
+      color: #fff;
+    }
+    .contacto-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    .contacto-form label {
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+    .contacto-form input,
+    .contacto-form select,
+    .contacto-form textarea {
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--color-border);
+      font-size: 1rem;
+      font-family: 'DM Sans', Arial, sans-serif;
+      background: var(--color-bg-alt);
+      color: var(--color-text);
+      transition: border-color var(--transition);
+      resize: none;
+    }
+    .contacto-form input:focus,
+    .contacto-form select:focus,
+    .contacto-form textarea:focus {
+      border-color: var(--color-accent);
+      outline: none;
+    }
+    .contacto-form .form-row {
+      display: flex;
+      gap: 1rem;
+    }
+    .contacto-form .form-row > * {
+      flex: 1;
+    }
+    .contacto-form .radio-group,
+    .contacto-form .toggle-group {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .contacto-form .radio-group label,
+    .contacto-form .toggle-group label {
+      font-weight: 400;
+      color: var(--color-text);
+      margin-bottom: 0;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .contacto-form button[type="submit"] {
+      background: var(--color-accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.9rem 2.2rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background var(--transition), transform var(--transition);
+      outline: none;
+      margin-top: 0.5rem;
+    }
+    .contacto-form button[type="submit"]:hover {
+      background: var(--color-gold);
+      color: #fff;
+      transform: translateY(-2px) scale(1.03);
+    }
+    .contacto-confirm {
+      text-align: center;
+      color: var(--color-accent);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      background: var(--color-bg-alt);
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--color-border);
+    }
+    /* Footer */
+    footer {
+      background: var(--color-bg-alt);
+      color: var(--color-text);
+      padding: 2.5rem 1.2rem 1.2rem 1.2rem;
+      border-top: 1px solid var(--color-border);
+      margin-top: 3rem;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 1px;
+      margin-bottom: 0.2rem;
+      text-decoration: none;
+    }
+    /* TODO: REEMPLAZAR nombre/logo */
+    .footer-tagline {
+      color: var(--color-muted);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+    .footer-links a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover {
+      color: var(--color-gold);
+    }
+    .footer-contact {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .footer-contact span {
+      font-size: 1rem;
+      color: var(--color-muted);
+    }
+    .footer-social {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #fff;
+      transition: background var(--transition), transform var(--transition);
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      background: var(--color-gold);
+      transform: scale(1.08);
+    }
+    .footer-copy {
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 0.95rem;
+      margin-top: 1.2rem;
+    }
+    /* Responsive */
+    @media (min-width: 600px) {
+      .servicios-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .porque-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .testimonios-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0.5rem 1rem;
+      }
+      section {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .contacto-container {
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(248,247,244,0.98);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        box-shadow: 0 2px 16px 0 rgba(34,40,49,0.08);
+        padding: 1.2rem 0;
+        gap: 1.5rem;
+      }
+      .navbar-links.open {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="navbar-logo">Corredora Pipi</a> <!-- TODO: REEMPLAZAR nombre/logo -->
+    <div class="navbar-links" id="navbarLinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#porque">¿Por qué elegirnos?</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="navbar-toggle" id="navbarToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <h1 class="hero-headline">Tu próxima operación inmobiliaria, con respaldo profesional</h1>
+    <p class="hero-subheadline">Venta, arriendo y administración de propiedades residenciales y comerciales en Chile</p>
+    <button class="hero-cta" onclick="scrollToContacto()">Contáctanos</button>
+  </header>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <!-- SVG Venta -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="12" width="20" height="12" rx="3" stroke="#1a2947" stroke-width="2"/><path d="M8 12V8a6 6 0 1 1 12 0v4" stroke="#1a2947" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <h3>Venta</h3>
+          <p>Te acompañamos en cada etapa del proceso de venta, desde la tasación hasta la firma</p>
+        </div>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <!-- SVG Arriendo -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="10" width="20" height="12" rx="3" stroke="#1a2947" stroke-width="2"/><path d="M14 4v6" stroke="#1a2947" stroke-width="2"/><circle cx="14" cy="4" r="2" stroke="#1a2947" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <h3>Arriendo</h3>
+          <p>Encontramos al arrendatario ideal y gestionamos el contrato con respaldo legal</p>
+        </div>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">
+          <!-- SVG Administración -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="10" width="20" height="12" rx="3" stroke="#1a2947" stroke-width="2"/><path d="M8 10V8a6 6 0 0 1 12 0v2" stroke="#1a2947" stroke-width="2"/><path d="M14 16v2" stroke="#1a2947" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <h3>Administración</h3>
+          <p>Nos encargamos de tu propiedad: cobros, mantención y comunicación con arrendatarios</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section id="porque">
+    <h2 class="section-title">¿Por qué trabajar con nosotros?</h2>
+    <div class="porque-grid">
+      <div class="porque-item">
+        <h4>Respaldo legal interno</h4>
+        <p>Contamos con abogado propio en el equipo para proteger cada operación</p>
+      </div>
+      <div class="porque-item">
+        <h4>Atención personalizada</h4>
+        <p>No eres un número. Tu caso es atendido directamente por los socios</p>
+      </div>
+      <div class="porque-item">
+        <h4>Cobertura completa</h4>
+        <p>Operamos en propiedades residenciales y comerciales sin restricción</p>
+      </div>
+      <div class="porque-item">
+        <h4>Proceso transparente</h4>
+        <p>Te informamos en cada paso. Sin sorpresas, sin letra chica</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <div class="testimonios-grid">
+      <div class="testimonio-card">
+        <div class="testimonio-quote">Vendimos nuestro departamento en menos de 6 semanas. El proceso fue claro y sin sorpresas.</div>
+        <div class="testimonio-author">— María T., Providencia</div>
+      </div>
+      <div class="testimonio-card">
+        <div class="testimonio-quote">Llevan más de un año administrando mi local comercial y no he tenido ningún problema.</div>
+        <div class="testimonio-author">— Roberto A., Las Condes</div>
+      </div>
+      <div class="testimonio-card">
+        <div class="testimonio-quote">Me ayudaron a arrendar siendo extranjero. El respaldo legal marcó la diferencia.</div>
+        <div class="testimonio-author">— Carlos M., Ñuñoa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO DE CONTACTO -->
+  <section id="contacto">
+    <h2 class="section-title">Hablemos</h2>
+    <div class="contacto-container">
+      <div class="contacto-tabs">
+        <button class="contacto-tab active" id="tab-busco" onclick="toggleTab('busco')">Busco una propiedad</button>
+        <button class="contacto-tab" id="tab-tengo" onclick="toggleTab('tengo')">Tengo una propiedad</button>
+      </div>
+      <form class="contacto-form" id="form-busco" onsubmit="return submitForm(event)">
+        <div class="radio-group">
+          <label>Tipo de operación:</label>
+          <label><input type="radio" name="operacion" value="Comprar" required> Comprar</label>
+          <label><input type="radio" name="operacion" value="Arrendar"> Arrendar</label>
+        </div>
+        <div class="radio-group">
+          <label>Tipo de propiedad:</label>
+          <label><input type="radio" name="tipo_propiedad" value="Residencial" required> Residencial</label>
+          <label><input type="radio" name="tipo_propiedad" value="Comercial"> Comercial</label>
+        </div>
+        <label>Presupuesto aproximado
+          <input type="text" name="presupuesto" placeholder="Ej: $150.000.000 o $1.000.000/mes">
+        </label>
+        <label>Nombre completo
+          <input type="text" name="nombre" required>
+        </label>
+        <div class="form-row">
+          <label>Teléfono
+            <input type="tel" name="telefono" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" required>
+          </label>
+        </div>
+        <label>Mensaje
+          <textarea name="mensaje" rows="3" placeholder="Cuéntanos qué buscas"></textarea>
+        </label>
+        <button type="submit">Enviar consulta</button>
+      </form>
+      <form class="contacto-form" id="form-tengo" style="display:none" onsubmit="return submitForm(event)">
+        <div class="radio-group">
+          <label>Qué necesito:</label>
+          <label><input type="radio" name="necesito" value="Vender" required> Vender</label>
+          <label><input type="radio" name="necesito" value="Arrendar"> Arrendar</label>
+          <label><input type="radio" name="necesito" value="Administrar"> Administrar</label>
+        </div>
+        <div class="radio-group">
+          <label>Tipo de propiedad:</label>
+          <label><input type="radio" name="tipo_propiedad" value="Residencial" required> Residencial</label>
+          <label><input type="radio" name="tipo_propiedad" value="Comercial"> Comercial</label>
+        </div>
+        <label>Comuna
+          <input type="text" name="comuna" required>
+        </label>
+        <label>Nombre completo
+          <input type="text" name="nombre" required>
+        </label>
+        <div class="form-row">
+          <label>Teléfono
+            <input type="tel" name="telefono" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" required>
+          </label>
+        </div>
+        <label>Mensaje
+          <textarea name="mensaje" rows="3" placeholder="Cuéntanos sobre tu propiedad"></textarea>
+        </label>
+        <button type="submit">Solicitar asesoría</button>
+      </form>
+      <div class="contacto-confirm" id="contactoConfirm" style="display:none">
+        Gracias, nos contactaremos contigo a la brevedad
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <a href="#hero" class="footer-logo">Corredora Pipi</a> <!-- TODO: REEMPLAZAR nombre/logo -->
+        <div class="footer-tagline">Asesoría inmobiliaria profesional en Chile</div>
+      </div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#porque">¿Por qué elegirnos?</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-contact">
+        <span>+56 9 XXXX XXXX</span> <!-- TODO: REEMPLAZAR teléfono -->
+        <span>contacto@correpipi.cl</span> <!-- TODO: REEMPLAZAR email -->
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="WhatsApp" target="_blank" rel="noopener"><!-- TODO: REEMPLAZAR link WhatsApp -->
+          <!-- WhatsApp SVG -->
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#fff" stroke-width="2"/><path d="M7.5 9.5c.5 2 2.5 4 4 4.5l1.5-1.5c.2-.2.5-.2.7 0l1.2 1.2c.2.2.2.5 0 .7-1.2 1.2-2.8 1.6-4.4 1.1-2.2-.7-4-2.5-4.7-4.7-.5-1.6-.1-3.2 1.1-4.4.2-.2.5-.2.7 0l1.2 1.2c.2.2.2.5 0 .7L7.5 9.5z" stroke="#fff" stroke-width="1.2"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><!-- TODO: REEMPLAZAR link Instagram -->
+          <!-- Instagram SVG -->
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="18" height="18" rx="5" stroke="#fff" stroke-width="2"/><circle cx="11" cy="11" r="4" stroke="#fff" stroke-width="2"/><circle cx="16.2" cy="5.8" r="1" fill="#fff"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2025 Corredora Pipi. Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- JS: Navbar, scroll, tabs, animaciones -->
+  <script>
+    // Navbar toggle (mobile)
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarLinks = document.getElementById('navbarLinks');
+    navbarToggle.addEventListener('click', () => {
+      navbarLinks.classList.toggle('open');
+    });
+    // Cerrar menú al hacer click en link
+    document.querySelectorAll('.navbar-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navbarLinks.classList.remove('open');
+      });
+    });
+    // Scroll suave a contacto
+    function scrollToContacto() {
+      document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+    }
+    // Tabs formulario
+    function toggleTab(tab) {
+      document.getElementById('tab-busco').classList.toggle('active', tab === 'busco');
+      document.getElementById('tab-tengo').classList.toggle('active', tab === 'tengo');
+      document.getElementById('form-busco').style.display = tab === 'busco' ? '' : 'none';
+      document.getElementById('form-tengo').style.display = tab === 'tengo' ? '' : 'none';
+      document.getElementById('contactoConfirm').style.display = 'none';
+    }
+    // Envío de formulario (sin backend)
+    function submitForm(event) {
+      event.preventDefault();
+      document.getElementById('form-busco').style.display = 'none';
+      document.getElementById('form-tengo').style.display = 'none';
+      document.getElementById('contactoConfirm').style.display = '';
+      return false;
+    }
+    // Animaciones fade-in al hacer scroll
+    function fadeInOnScroll() {
+      const fadeEls = document.querySelectorAll('section, .servicio-card, .porque-item, .testimonio-card');
+      const trigger = window.innerHeight * 0.92;
+      fadeEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < trigger) {
+          el.style.opacity = 1;
+          el.style.transform = 'none';
+        } else {
+          el.style.opacity = 0;
+          el.style.transform = 'translateY(40px)';
+        }
+        el.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
+      });
+    }
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('resize', fadeInOnScroll);
+    window.addEventListener('DOMContentLoaded', () => {
+      fadeInOnScroll();
+    });
+  </script>
+</body>
+</html>
