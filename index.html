@@ -21,7 +21,7 @@
       --color-bg: #f8f7f4;
       --color-bg-alt: #f3f2ef;
       --color-text: #232323;
-      --color-accent: #1a2947; /* Azul marino */
+      --color-accent: #1a2947;
       --color-accent-light: #2d4066;
       --color-gold: #bfa76a;
       --color-border: #e0ded9;
@@ -43,37 +43,36 @@
       min-height: 100vh;
       line-height: 1.6;
     }
-    /* Navbar */
+    /* Header estilo Atlas Edge */
     .navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: rgba(248,247,244,0.97);
-      box-shadow: 0 1px 8px 0 rgba(34,40,49,0.04);
+      background: #fff;
+      box-shadow: 0 1px 8px 0 rgba(34,40,49,0.06);
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 2rem;
-      transition: background var(--transition);
+      padding: 0.7rem 2.5rem;
+      border-bottom: 1px solid var(--color-border);
     }
     .navbar-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       font-weight: 700;
       color: var(--color-accent);
       letter-spacing: 1px;
       text-decoration: none;
     }
-    /* TODO: REEMPLAZAR nombre/logo */
     .navbar-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     .navbar-links a {
-      color: var(--color-text);
+      color: var(--color-accent);
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 1.05rem;
       transition: color var(--transition);
       position: relative;
     }
@@ -82,7 +81,7 @@
       display: block;
       width: 0;
       height: 2px;
-      background: var(--color-accent);
+      background: var(--color-gold);
       transition: width var(--transition);
       position: absolute;
       left: 0; bottom: -2px;
@@ -103,33 +102,32 @@
       border-radius: 2px;
       transition: all var(--transition);
     }
-    /* Hero */
+    /* Hero compacto */
     .hero {
-      min-height: 100vh;
+      min-height: 60vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       background: linear-gradient(120deg, rgba(26,41,71,0.82) 0%, rgba(34,40,49,0.7) 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      /* TODO: REEMPLAZAR imagen de fondo */
       color: #fff;
       text-align: center;
-      padding-top: 5.5rem;
-      padding-bottom: 3rem;
+      padding-top: 6.5rem;
+      padding-bottom: 2.5rem;
       position: relative;
     }
     .hero-headline {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.7rem;
       letter-spacing: 0.5px;
       text-shadow: 0 2px 16px rgba(34,40,49,0.18);
     }
     .hero-subheadline {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 400;
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.7rem;
       color: #e0ded9;
       text-shadow: 0 1px 8px rgba(34,40,49,0.12);
     }
@@ -549,10 +547,47 @@
 
   <!-- HERO -->
   <header class="hero" id="hero">
-    <h1 class="hero-headline">Tu próxima operación inmobiliaria, con respaldo profesional</h1>
-    <p class="hero-subheadline">Venta, arriendo y administración de propiedades residenciales y comerciales en Chile</p>
+    <h1 class="hero-headline">Protegemos tus intereses. Logramos resultados.</h1>
+    <p class="hero-subheadline">Asesoría inmobiliaria profesional en Chile. Venta, arriendo y administración de propiedades residenciales y comerciales.</p>
     <button class="hero-cta" onclick="scrollToContacto()">Contáctanos</button>
   </header>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre">
+    <h2 class="section-title">Sobre Corredora Pipi</h2>
+    <div style="max-width:800px;margin:0 auto;text-align:center;font-size:1.15rem;color:var(--color-muted);">
+      En Corredora Pipi, tu éxito es nuestra obsesión. Nos mueve la excelencia, la transparencia y el compromiso total con cada cliente. Ya sea que busques comprar, vender o administrar una propiedad, diseñamos una estrategia a tu medida y te acompañamos en cada paso.<br><br>
+      <b>¡Estamos aquí para ayudarte a ganar, siempre!</b>
+    </div>
+  </section>
+
+  <!-- EQUIPO -->
+  <section id="equipo">
+    <h2 class="section-title">Nuestro Equipo</h2>
+    <div style="display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;align-items:center;max-width:900px;margin:0 auto;">
+      <div style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:1.5rem 1.2rem;text-align:center;min-width:220px;">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Pipi Socia" style="width:90px;height:90px;border-radius:50%;margin-bottom:0.7rem;border:2px solid var(--color-gold);">
+        <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--color-accent);">Pipi González</div>
+        <div style="color:var(--color-muted);font-size:1rem;">Socia Fundadora</div>
+      </div>
+      <div style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:1.5rem 1.2rem;text-align:center;min-width:220px;">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Abogado" style="width:90px;height:90px;border-radius:50%;margin-bottom:0.7rem;border:2px solid var(--color-gold);">
+        <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--color-accent);">Juan Pérez</div>
+        <div style="color:var(--color-muted);font-size:1rem;">Abogado Interno</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMUNAS DESTACADAS -->
+  <section id="comunas">
+    <h2 class="section-title">Comunas Destacadas</h2>
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;max-width:900px;margin:0 auto;">
+      <a href="#contacto" style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:1.2rem 2.2rem;font-size:1.1rem;color:var(--color-accent);text-decoration:none;font-weight:600;transition:box-shadow .2s;">Providencia</a>
+      <a href="#contacto" style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:1.2rem 2.2rem;font-size:1.1rem;color:var(--color-accent);text-decoration:none;font-weight:600;transition:box-shadow .2s;">Las Condes</a>
+      <a href="#contacto" style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:1.2rem 2.2rem;font-size:1.1rem;color:var(--color-accent);text-decoration:none;font-weight:600;transition:box-shadow .2s;">Ñuñoa</a>
+      <a href="#contacto" style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:1.2rem 2.2rem;font-size:1.1rem;color:var(--color-accent);text-decoration:none;font-weight:600;transition:box-shadow .2s;">Vitacura</a>
+    </div>
+  </section>
 
   <!-- SERVICIOS -->
   <section id="servicios">
@@ -616,20 +651,39 @@
 
   <!-- TESTIMONIOS -->
   <section id="testimonios">
-    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-    <div class="testimonios-grid">
-      <div class="testimonio-card">
-        <div class="testimonio-quote">Vendimos nuestro departamento en menos de 6 semanas. El proceso fue claro y sin sorpresas.</div>
-        <div class="testimonio-author">— María T., Providencia</div>
+    <h2 class="section-title">Testimonios de Clientes</h2>
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;max-width:900px;margin:0 auto;">
+      <div style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:2rem 1.5rem 1.5rem 1.5rem;max-width:320px;min-width:220px;">
+        <div style="font-size:1.1rem;color:var(--color-text);margin-bottom:1.2rem;position:relative;padding-left:2.2rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--color-gold);position:absolute;left:0;top:-1.2rem;line-height:1;">“</span>
+          Vendimos nuestro departamento en menos de 6 semanas. El proceso fue claro y sin sorpresas.
+        </div>
+        <div style="font-size:1rem;color:var(--color-muted);font-style:italic;text-align:right;">— María T., Providencia</div>
       </div>
-      <div class="testimonio-card">
-        <div class="testimonio-quote">Llevan más de un año administrando mi local comercial y no he tenido ningún problema.</div>
-        <div class="testimonio-author">— Roberto A., Las Condes</div>
+      <div style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:2rem 1.5rem 1.5rem 1.5rem;max-width:320px;min-width:220px;">
+        <div style="font-size:1.1rem;color:var(--color-text);margin-bottom:1.2rem;position:relative;padding-left:2.2rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--color-gold);position:absolute;left:0;top:-1.2rem;line-height:1;">“</span>
+          Llevan más de un año administrando mi local comercial y no he tenido ningún problema.
+        </div>
+        <div style="font-size:1rem;color:var(--color-muted);font-style:italic;text-align:right;">— Roberto A., Las Condes</div>
       </div>
-      <div class="testimonio-card">
-        <div class="testimonio-quote">Me ayudaron a arrendar siendo extranjero. El respaldo legal marcó la diferencia.</div>
-        <div class="testimonio-author">— Carlos M., Ñuñoa</div>
+      <div style="background:var(--color-card);box-shadow:var(--shadow);border-radius:var(--radius);padding:2rem 1.5rem 1.5rem 1.5rem;max-width:320px;min-width:220px;">
+        <div style="font-size:1.1rem;color:var(--color-text);margin-bottom:1.2rem;position:relative;padding-left:2.2rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--color-gold);position:absolute;left:0;top:-1.2rem;line-height:1;">“</span>
+          Me ayudaron a arrendar siendo extranjero. El respaldo legal marcó la diferencia.
+        </div>
+        <div style="font-size:1rem;color:var(--color-muted);font-style:italic;text-align:right;">— Carlos M., Ñuñoa</div>
       </div>
+    </div>
+  </section>
+
+  <!-- CTA CLAROS -->
+  <section id="cta" style="padding:2.5rem 1.2rem 2.5rem 1.2rem;max-width:1100px;margin:0 auto;text-align:center;">
+    <h2 class="section-title">¿Listo para avanzar?</h2>
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;">
+      <a href="#contacto" style="background:var(--color-accent);color:#fff;font-weight:600;font-size:1.1rem;border-radius:var(--radius);padding:1.1rem 2.5rem;text-decoration:none;box-shadow:var(--shadow);transition:background .2s;">Vender mi propiedad</a>
+      <a href="#contacto" style="background:var(--color-gold);color:#fff;font-weight:600;font-size:1.1rem;border-radius:var(--radius);padding:1.1rem 2.5rem;text-decoration:none;box-shadow:var(--shadow);transition:background .2s;">Comprar o arrendar</a>
+      <a href="#contacto" style="background:var(--color-card);color:var(--color-accent);font-weight:600;font-size:1.1rem;border-radius:var(--radius);padding:1.1rem 2.5rem;text-decoration:none;box-shadow:var(--shadow);border:1.5px solid var(--color-accent);transition:background .2s;">Solicitar tasación</a>
     </div>
   </section>
 
